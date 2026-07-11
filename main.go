@@ -51,7 +51,11 @@ func main() {
 	var resultsDir string
 	flag.StringVar(&resultsDir, "results", "./results", "output directory used with --all")
 
+	var silentMode bool
+	flag.BoolVar(&silentMode, "silent", false, "silent mode (no banner)")
+
 	flag.Usage = func() {
+		showBanner(silentMode)
 		fmt.Fprintf(os.Stderr, "Usage:\n")
 		fmt.Fprintf(os.Stderr, "  cat urls.txt | gflux PATTERN        pipe mode\n")
 		fmt.Fprintf(os.Stderr, "  gflux PATTERN [path]                file/dir mode\n")
@@ -64,6 +68,8 @@ func main() {
 	}
 
 	flag.Parse()
+
+	showBanner(silentMode)
 
 	if flag.NArg() > 0 && flag.Arg(0) == "init" {
 		initCmd()
