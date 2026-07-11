@@ -74,26 +74,40 @@ go install -v github.com/hackthacker/gflux@latest
 
 ---
 
-### 5. Install Pattern Files
+### 5. Verify Installation & Usage
 
-The Go toolchain's `go install` command only installs the compiled binary. To quickly download and extract the default patterns directly to your local config folder without keeping a cloned repository, run the command for your OS below:
+Once `gflux` is installed, verify that the binary is available and lists the embedded patterns correctly:
 
-#### **Linux / macOS (One-liner)**
 ```bash
-git clone --depth=1 https://github.com/hackthacker/gflux.git /tmp/gflux && mkdir -p ~/.gflux && cp -r /tmp/gflux/.gflux/* ~/.gflux/ && rm -rf /tmp/gflux
-```
-
-#### **Windows PowerShell (One-liner)**
-```powershell
-git clone --depth=1 https://github.com/hackthacker/gflux.git $env:TEMP/gflux; New-Item -ItemType Directory -Force -Path ~/.gflux; Copy-Item -Recurse $env:TEMP/gflux/.gflux/* ~/.gflux/; Remove-Item -Recurse -Force $env:TEMP/gflux
+gflux -list
 ```
 
 ---
 
-### 6. Verify Installation
+## Embedded Patterns & Customization
 
-Once installed, verify that the binary is available and works correctly using **`gflux`** (not `gf`):
+`gflux` is fully self-contained. The default patterns are embedded directly inside the binary. You do not need to download or copy anything to start using it immediately!
 
+### Pattern Resolution Priority
+`gflux` looks up patterns using the following priority order:
+1. **Local project patterns** (highest priority): `./.gflux/`
+2. **User custom patterns**: `~/.gflux/` (also looks in `~/.config/gflux/`, `~/.gf/`, and `~/.config/gf/`)
+3. **Embedded default patterns** (lowest priority): Pre-compiled inside the binary.
+
+If a pattern name matches in multiple locations, the higher priority source overrides the lower priority one.
+
+### Grouped Pattern Listing
+To see exactly which patterns are available and where they are loaded from, run:
 ```bash
-gflux -list
+gflux --list-patterns
+```
+
+### Initializing User Custom Patterns
+If you want to edit or customize the default patterns, you can initialize the user custom folder and copy the embedded default patterns to it:
+```bash
+# Initialize and copy patterns (will prompt)
+gflux init
+
+# Initialize and copy automatically (force/yes flag)
+gflux init -y
 ```
