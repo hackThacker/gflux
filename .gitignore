@@ -1,0 +1,29 @@
+# Go binaries
+gf
+gf.exe
+gflux
+gflux.exe
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test files and directories
+test.s
+test/
+tests/
+
+# GF / Pattern config files and examples (explicitly excluded as requested)
+.gf/
+examples/
+README.md
+LICENSE
+gf-completion.bash
+gf-completion.fish
+gf-completion.zsh
+
+# Local configurations / temp files
+*.local
+*.log
+results/
