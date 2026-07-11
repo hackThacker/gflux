@@ -11,24 +11,27 @@ var Version = "dev"
 var bannerPrinted bool
 
 const bannerText = `
- ██████  ███████ ██      ██    ██ ██   ██ 
-██       ██      ██      ██    ██  ██ ██  
-██   ███ █████   ██      ██    ██   ███   
-██    ██ ██      ██      ██    ██  ██ ██  
- ██████  ██      ███████  ██████  ██   ██ 
-                                          
-                                          
+  ____ _____ _    _   ___  __
+ / ___|  ___| |  | | | \ \/ /
+| |  _| |_  | |  | | | |\  / 
+| |_| |  _| | |__| |_| |/  \ 
+ \____|_|   |_____\___//_/\_\
 
               gflux %s
               hackthacker.app
 
 `
 
+// printBanner prints the plain ASCII banner to os.Stderr.
+func printBanner() {
+	fmt.Fprintf(os.Stderr, bannerText, Version)
+}
+
 // showBanner prints the ASCII banner once unless silent is true.
 func showBanner(silent bool) {
 	if silent || bannerPrinted {
 		return
 	}
-	fmt.Fprintf(os.Stderr, bannerText, Version)
+	printBanner()
 	bannerPrinted = true
 }
