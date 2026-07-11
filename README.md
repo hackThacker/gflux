@@ -6,15 +6,19 @@
 
 ## Installation Guide
 
-Follow these steps to install Go, configure your environment path, and install `gflux` on your system.
+Follow these steps to install Go, configure your environment, and install `gflux` on your system.
 
 ### 1. Install Go
 
-If you do not have Go installed, download and install it from the official site:
+On Debian/Ubuntu systems, you can install Go using:
+```bash
+sudo apt install golang-go -y
+```
 
+Otherwise, download and install it from the official site:
 - **Download Link**: [go.dev/dl](https://go.dev/dl)
-- **Linux/macOS**: Download the archive, extract it to `/usr/local/go` (e.g., `tar -C /usr/local -xzf goX.Y.Z.linux-amd64.tar.gz`).
-- **Windows**: Download the MSI installer and run it.
+- **Linux/macOS Tarball**: Extract to `/usr/local/go`.
+- **Windows**: Download and run the MSI installer.
 
 To verify the installation, run:
 ```bash
@@ -25,38 +29,29 @@ go version
 
 ### 2. Configure Environment Variables
 
-You need to ensure that the Go binary directory (`$GOPATH/bin` or `$HOME/go/bin`) is in your system's executable search path (`$PATH`).
+Add the Go paths to your shell configuration file.
 
-#### For macOS / Linux
-
-Select the configuration command based on your default shell:
-
-##### **For Bash (`~/.bashrc` or `~/.bash_profile`)**
-Append the Go environment settings:
+#### **For Bash (`~/.bashrc`)**
+Run these commands to configure the environment:
 ```bash
+echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
 echo 'export GOPATH=$HOME/go' >> ~/.bashrc
-echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> ~/.bashrc
 ```
 
-##### **For Zsh (`~/.zshrc`)**
-Append the Go environment settings:
+#### **For Zsh (`~/.zshrc`)**
+Run these commands to configure the environment:
 ```bash
+echo 'export GOROOT=/usr/local/go' >> ~/.zshrc
 echo 'export GOPATH=$HOME/go' >> ~/.zshrc
-echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.zshrc
-```
-
-##### **For Bourne Shell / generic POSIX (`~/.profile`)**
-Append the Go environment settings:
-```bash
-echo 'export GOPATH=$HOME/go' >> ~/.profile
-echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
+echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> ~/.zshrc
 ```
 
 ---
 
-### 3. Reload Shell Configuration
+### 3. Apply/Source Shell Configuration
 
-To apply the path changes immediately in your current terminal session, source the configuration file:
+To apply the path changes immediately in your current terminal session, run:
 
 - **For Bash**:
   ```bash
@@ -66,16 +61,12 @@ To apply the path changes immediately in your current terminal session, source t
   ```bash
   source ~/.zshrc
   ```
-- **For Sh/POSIX**:
-  ```bash
-  source ~/.profile
-  ```
 
 ---
 
-### 4. Install gflux
+### 4. Install gflux Binary
 
-Run the following command to download, compile, and install `gflux` directly using the Go toolchain:
+Run the following command to download, compile, and install the `gflux` utility:
 
 ```bash
 go install -v github.com/hackthacker/gflux@latest
@@ -83,9 +74,25 @@ go install -v github.com/hackthacker/gflux@latest
 
 ---
 
-### 5. Verify Installation
+### 5. Install Pattern Files
 
-Once installed, check that the binary is available in your path:
+The Go toolchain's `go install` command only installs the compiled binary. To make `gflux` patterns available, you must copy the `.gf` pattern files to your local configuration folder:
+
+```bash
+# Clone the repository
+git clone https://github.com/hackthacker/gflux.git
+cd gflux
+
+# Copy patterns to the gflux config directory
+mkdir -p ~/.gflux
+cp -r .gf/* ~/.gflux/
+```
+
+---
+
+### 6. Verify Installation
+
+Once installed, check that the binary is available and works correctly:
 
 ```bash
 gflux -h
