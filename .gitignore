@@ -11,6 +11,7 @@ gflux.exe
 
 # Test files and directories
 test.s
+test.txt
 test/
 tests/
 
