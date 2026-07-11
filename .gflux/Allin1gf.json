@@ -28,7 +28,7 @@
         "adm=",
         "root=",
         "cfg=",
-        "config="
+        "config=",
 	"id=",
 	"user=",
 	"account=",
@@ -41,11 +41,11 @@
 	"group=",
 	"profile=",
 	"edit=",
-	"report="
+	"report=",
 	"=.*.jpg",
         "=.*.jpeg",
         "=.*.gif",
-        "=.*.png"
+        "=.*.png",
 	"\\.action",
 	"\\.adr",
 	"\\.ascx",
@@ -112,7 +112,7 @@
 	"\\.xlsx",
 	"\\.xml",
 	"\\.xsd",
-	"\\.yml"
+	"\\.yml",
         "template=",
         "preview=",
         "id=",
@@ -330,7 +330,7 @@
         "adm=",
         "root=",
         "cfg=",
-        "config="
+        "config=",
 	"admin",
 	"jenkins",
 	"test",
@@ -342,7 +342,7 @@
 	"staff",
 	"db",
 	"qa",
-	"internal"
+	"internal",
 	"file=",
         "document=",
         "folder=",
@@ -355,7 +355,7 @@
         "php_path=",
         "doc=",
         "page=",
-        "name="
+        "name=",
  	"daemon=",
         "upload=",
         "dir=",
@@ -364,7 +364,7 @@
         "log=",
         "ip=",
         "cli=",
-        "cmd="
+        "cmd=",
 	"(&|[?])callback=",
 	"(&|[?])cgi-bin/redirect.cgi",
 	"(&|[?])checkout=",
@@ -423,7 +423,7 @@
 	"(&|[?])val=",
 	"(&|[?])validate=",
 	"(&|[?])view=",
-	"(&|[?])window="
+	"(&|[?])window=",
 	 "id=",
         "select=",
         "report=",
@@ -452,7 +452,7 @@
         "delete=",
         "string=",
         "number=",
-        "filter="
+        "filter=",
 	"(&|[?])access(&|=)",
         "(&|[?])admin(&|=)",
         "(&|[?])dbg(&|=)",
@@ -513,7 +513,7 @@
         "(&|[?])style(&|=)",
         "(&|[?])doc(&|=)",
         "(&|[?])img(&|=)",
-        "(&|[?])filename(&|=)"
+        "(&|[?])filename(&|=)",
 	"template=",
 	"preview=",
 	"id=",
