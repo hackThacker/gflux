@@ -76,24 +76,24 @@ go install -v github.com/hackthacker/gflux@latest
 
 ### 5. Install Pattern Files
 
-The Go toolchain's `go install` command only installs the compiled binary. To make `gflux` patterns available, you must copy the `.gflux` pattern files to your local configuration folder:
+The Go toolchain's `go install` command only installs the compiled binary. To quickly download and extract the default patterns directly to your local config folder without keeping a cloned repository, run the command for your OS below:
 
+#### **Linux / macOS (One-liner)**
 ```bash
-# Clone the repository
-git clone https://github.com/hackthacker/gflux.git
-cd gflux
+git clone --depth=1 https://github.com/hackthacker/gflux.git /tmp/gflux && mkdir -p ~/.gflux && cp -r /tmp/gflux/.gflux/* ~/.gflux/ && rm -rf /tmp/gflux
+```
 
-# Copy patterns to the gflux config directory
-mkdir -p ~/.gflux
-cp -r .gflux/* ~/.gflux/
+#### **Windows PowerShell (One-liner)**
+```powershell
+git clone --depth=1 https://github.com/hackthacker/gflux.git $env:TEMP/gflux; New-Item -ItemType Directory -Force -Path ~/.gflux; Copy-Item -Recurse $env:TEMP/gflux/.gflux/* ~/.gflux/; Remove-Item -Recurse -Force $env:TEMP/gflux
 ```
 
 ---
 
 ### 6. Verify Installation
 
-Once installed, check that the binary is available and works correctly:
+Once installed, verify that the binary is available and works correctly using **`gflux`** (not `gf`):
 
 ```bash
-gflux -h
+gflux -list
 ```
