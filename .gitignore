@@ -16,6 +16,7 @@ test/
 tests/
 
 # GF / Pattern config files and examples (explicitly excluded as requested)
+.gf/
 examples/
 LICENSE
 gf-completion.bash

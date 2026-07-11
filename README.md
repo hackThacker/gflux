@@ -76,7 +76,7 @@ go install -v github.com/hackthacker/gflux@latest
 
 ### 5. Install Pattern Files
 
-The Go toolchain's `go install` command only installs the compiled binary. To make `gflux` patterns available, you must copy the `.gf` pattern files to your local configuration folder:
+The Go toolchain's `go install` command only installs the compiled binary. To make `gflux` patterns available, you must copy the `.gflux` pattern files to your local configuration folder:
 
 ```bash
 # Clone the repository
@@ -85,7 +85,7 @@ cd gflux
 
 # Copy patterns to the gflux config directory
 mkdir -p ~/.gflux
-cp -r .gf/* ~/.gflux/
+cp -r .gflux/* ~/.gflux/
 ```
 
 ---
